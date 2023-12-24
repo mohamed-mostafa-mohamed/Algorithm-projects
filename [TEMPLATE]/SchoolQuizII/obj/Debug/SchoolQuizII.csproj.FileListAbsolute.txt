@@ -1,0 +1,19 @@
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\bin\Debug\SchoolQuizII.exe.config
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\obj\Debug\SchoolQuizII.csprojResolveAssemblyReference.cache
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\bin\Debug\SchoolQuizII.exe
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\bin\Debug\SchoolQuizII.pdb
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\obj\Debug\SchoolQuizII.exe
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[SOLUTION]\SchoolQuizII\obj\Debug\SchoolQuizII.pdb
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.exe.config
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.exe
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.pdb
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.exe
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.pdb
+E:\COURSES\Algorithms\[1] [ALL PROBLEMS - CODE]\UNIFIED OUTPUT\DP\[R2] School Quiz II\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.csprojResolveAssemblyReference.cache
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.exe.config
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.exe
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\bin\Debug\SchoolQuizII.pdb
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.csproj.AssemblyReference.cache
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.csproj.CoreCompileInputs.cache
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.exe
+C:\Users\01\Desktop\[TEMPLATE]\SchoolQuizII\obj\Debug\SchoolQuizII.pdb

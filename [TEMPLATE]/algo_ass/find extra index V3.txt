@@ -1,0 +1,23 @@
+  int Index1 = arr1.GetLength(0) - 1;
+            int Index2 = arr2.GetLength(0) - 1;
+            
+
+            if (Index1 == Index2 || Index1 == 0 || Index2 == 0||arr1[0]!=arr2[0])
+            {
+                return 0;
+            }
+            if (arr1[Index1] != arr2[Index2])
+            {
+                return Index1;
+            }
+           
+            for(int i =0; i < arr1.Length; i++)
+            {
+                if(arr1[i]+arr1[i+1]!= arr2[i] + arr2[i + 1])
+                {
+                    return i + 1;
+                }
+                
+            }
+
+            return 0;

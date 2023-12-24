@@ -1,0 +1,311 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Problem
+{
+    // *****************************************
+    // DON'T CHANGE CLASS OR FUNCTION NAME
+    // YOU CAN ADD FUNCTIONS IF YOU NEED TO
+    // *****************************************
+    public static class IntegerMultiplication
+    {
+        #region YOUR CODE IS HERE
+
+        //Your Code is Here:
+        //==================
+        /// <summary>
+        /// Multiply 2 large integers of N digits in an efficient way [Karatsuba's Method]
+        /// </summary>
+        /// <param name="X">First large integer of N digits [0: least significant digit, N-1: most signif. dig.]</param>
+        /// <param name="Y">Second large integer of N digits [0: least significant digit, N-1: most signif. dig.]</param>
+        /// <param name="N">Number of digits (power of 2)</param>
+        /// <returns>Resulting large integer of 2xN digits (left padded with 0's if necessarily) [0: least signif., 2xN-1: most signif.]</returns>
+       
+        static public byte[] IntegerMultiply(byte[] X, byte[] Y, int N)
+        {
+            //REMOVE THIS LINE BEFORE START CODING
+            if (N == 1)
+            {
+                byte[] R = new byte[1];
+                R[0] = (byte)(X[0] * Y[0]);
+                if (R[0] > 9)
+                {
+
+                    byte[] newR = new byte[2];
+                    newR[0] = (byte)(R[0] % 10);
+                    newR[1] = (byte)(R[0] / 10);
+                    
+
+                    return newR;
+                }
+                return R;
+
+            }
+         /*  if (X.All(x => x == 0)|| (Y.All(x => x == 0)))
+                {
+                byte []h = new byte[1];
+                return h;
+                }
+         */
+
+
+
+            
+             byte[] XL = secondPart(X, N);
+             byte[] XR = firstPart(X, N);
+             byte[] YL = secondPart(Y, N);
+             byte[] YR = firstPart(Y, N);
+
+             byte[] BD = IntegerMultiply(XL, YL, N / 2);
+             byte[] BC = IntegerMultiply(XL, YR, N / 2);
+             byte[] AD = IntegerMultiply(XR, YL, N / 2);
+             byte[] AC = IntegerMultiply(XR, YR, N / 2);
+
+             byte[] BDpowerN = shiftRight(BD, N);
+             byte[] BCplusAD = add(BC, AD);
+             byte[] BCplusADpowerN = shiftRight(BCplusAD, N / 2);
+             byte[] BDplusBCplusADpowerN = add(BDpowerN, BCplusADpowerN);
+             byte[] result = add(BDplusBCplusADpowerN, AC);
+             return result;
+          
+
+           /* byte[] XL = new byte[N / 2];
+            byte[] XR = new byte[N / 2];
+            Array.Copy(X, 0, XR, 0, N / 2);
+            Array.Copy(X, N / 2, XL, 0, N / 2);
+            byte[] YL = new byte[N / 2];
+            byte[] YR = new byte[N / 2];
+            Array.Copy(Y, 0, YR, 0, N / 2);
+            Array.Copy(Y, N / 2, YL, 0, N / 2);
+
+
+            byte[] xlplusxr = add(XR, XL);
+            byte[] ylplusyr = add(YR, YL);
+            int xlplusxrL = xlplusxr.Length;
+            int ylplusyrL = ylplusyr.Length;
+         
+                if(xlplusxrL< ylplusyrL)
+                {
+                    xlplusxr = shiftLeft(xlplusxr, Math.Abs(xlplusxrL - ylplusyrL));
+                }
+                else
+                {
+                    ylplusyr = shiftLeft(ylplusyr, Math.Abs(xlplusxrL - ylplusyrL));
+                }
+              
+            
+          
+
+            byte[] Z = IntegerMultiply(xlplusxr, ylplusyr, ylplusyrL);
+            byte[] BD = IntegerMultiply(XL, YL, N / 2);
+            byte[] AC = IntegerMultiply(XR, YR, N / 2);
+            byte[] BDpowerN = shiftRight(BD, N);
+            byte[] ZsubtractBD = subtract(Z, BD);
+            byte[] ZsubtractAC_AD = subtract(ZsubtractBD, AC);
+            byte[] ZsubtractAC_ADpowerN = shiftRight(ZsubtractAC_AD, N / 2);
+            byte[] BDplusZ = add(BDpowerN, ZsubtractAC_ADpowerN);
+            byte[] result = add(BDplusZ, AC);
+            return result;
+
+
+
+           */
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+        static public byte[] firstPart(byte[] a, int n)
+        {//working =>O(N)
+            byte[] RX = new byte[n / 2];
+            for (int i = 0; i < n / 2; i++)     
+                RX[i] = a[i];
+            return RX;
+        }
+
+        static public byte[] secondPart(byte[] a, int n)
+        {//Working -> O(N)
+            byte[] RX = new byte[n / 2];
+            for (int i = n / 2; i < n; i++)
+                RX[i - (n / 2)] = a[i];
+            return RX;
+        }
+        static public byte[] shiftLeft(byte[] a, int n)
+        {//working => O(N)
+            byte[] result = new byte[a.Length + n];
+            for (int i = 0; i < a.Length; i++)
+                result[i] = a[i];
+
+/*
+            for (int i = result.Length - n; i < result.Length; i++)
+            {
+                result[i] = 0;
+            }
+*/
+            return result;
+        }
+        static public byte[] shiftRight(byte[] a, int n)
+        {//workinh =>O(N)
+            byte[] result = new byte[a.Length + n];
+/*
+            for (int i = 0; i < n; i++)
+            {
+                result[i] = 0;
+            }
+*/
+            for (int i = 0; i < a.Length; i++)
+                result[i + n] = a[i];
+            return result;
+        }
+        static public byte[] add(byte[] a, byte[] b) { 
+            //working O(N+M) 
+            int indexA = a.Length;
+            int indexB = b.Length;
+            int ammountOfShift = Math.Abs(indexA - indexB);
+            if (a.Length < b.Length)
+            {
+                byte[] A = shiftLeft(a, ammountOfShift);
+                int length = A.Length;
+                byte[] result = new byte[length];
+                byte carry = 0;
+                byte sum = 0;
+                for (int i =0; i <length; i++)
+                {
+                    sum = (byte)(A[i] + b[i] + carry);
+                    if (sum / 10 != 0)
+                        carry = 1;
+                    else
+                        carry = 0;
+                    result[i] = (byte)(sum % 10);
+
+                }
+
+                if (carry != 0)
+                {
+                    /* byte[] newResult = new byte[length + 1];
+                     newResult[newResult.Length-1] = carry;
+                     for (int i = 0; i < result.Length; i++)
+                     {
+                         newResult[i] = result[i];
+                     }
+                     return newResult;
+                    */
+                    Array.Resize(ref result, length + 1);
+                    result[length] = carry;
+                    return result;
+                }
+                else
+                    return result;
+            }
+            else
+            {
+                byte[] B = shiftLeft(b, ammountOfShift);
+                int length = B.Length;
+                byte[] result = new byte[length];
+                byte carry = 0;
+                byte sum = 0;
+                for (int i = 0; i < length; i++)
+                {
+                    sum = (byte)(a[i] + B[i] + carry);
+                    if (sum / 10 != 0)
+                        carry = 1;
+                    else
+                        carry = 0;
+                    result[i] = (byte)(sum % 10);
+                }
+                if (carry != 0)
+                {
+                   /* byte[] newResult = new byte[length + 1];
+                    newResult[newResult.Length-1] = carry;
+                    for (int i = 0; i < result.Length; i++)
+                    {
+                        newResult[i] = result[i];
+                    }
+                    return newResult;
+                   */
+                    Array.Resize(ref result, length + 1);
+                    result[length ] = carry;
+                    return result;
+                }
+                else
+                    return result;
+            }
+
+
+        }
+        static public byte[] subtract(byte[] a, byte[] b)
+        {//working O(N)
+            int n = a.Length;
+            int m = b.Length;
+          /*  if (a.Length < b.Length)
+            {
+                a = shiftLeft(a, Math.Abs(n - m));
+            }
+            else
+            {
+                b = shiftLeft(b, Math.Abs(n - m));
+            }
+           */
+            byte[] c = new byte[n];
+            int borrow = 0;
+            int i = 0; // start from the first index
+            int j = 0;
+            while (i < n)
+            {
+                int x = a[i] - borrow;
+                int y = j < m ? b[j] : 0;
+                if (x < y)
+                {
+                    x += 10;
+                    borrow = 1;
+                }
+                else
+                {
+                    borrow = 0;
+                }
+                c[i] = (byte)(x - y);
+                i++;
+                j++;
+            }
+            // Remove leading zeros if any
+            
+            int k = 0;
+            /*
+              while (k < n - 1 && c[k] == 0)
+              {
+                  k++;
+              }
+            */
+            byte[] result = new byte[n - k];
+            for (int l = 0; l < result.Length; l++)
+            {
+                result[l] = c[k + l];
+            }
+            return result;
+        }
+      
+
+
+
+
+
+
+
+
+
+
+
+        #endregion
+    }
+}

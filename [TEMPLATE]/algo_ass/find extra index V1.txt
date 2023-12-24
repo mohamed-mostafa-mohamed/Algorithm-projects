@@ -1,0 +1,27 @@
+   public static int FindIndexOfExtraElement(int[] arr1, int[] arr2)
+        {
+            //REMOVE THIS LINE BEFORE START CODING
+            int n = arr2.Length;
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (count < n && arr1[count] == arr2[count])
+                {
+                    count++;
+                }
+                else
+                    break;
+            }
+            return count;
+        }
+
+        #endregion
+    }
+----------------------------------------------------------
+ int n = arr2.Length;
+            int i = 0;
+            while (i < n && arr1[i] == arr2[i])
+            {
+                i++;
+            }
+            return i;

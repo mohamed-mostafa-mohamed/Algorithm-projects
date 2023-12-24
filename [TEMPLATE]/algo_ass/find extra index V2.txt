@@ -1,0 +1,18 @@
+      int index = 0;
+            int Index1 = arr1.GetLength(0) - 1;
+            int Index2 = arr2.GetLength(0) - 1;
+            if (Index1 == Index2 || Index1 == 0 || Index2 == 0)
+            {
+                return 0;
+            }
+            if (arr1[Index1] == arr2[Index2])
+            {
+                while (arr1[index] == arr2[index])
+                {
+                    index++;
+                }
+                return index;
+            }
+            
+
+                return Index1;

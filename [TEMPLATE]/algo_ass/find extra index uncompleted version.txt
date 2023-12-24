@@ -1,0 +1,42 @@
+   
+            int Index1 = arr1.GetLength(0) - 1;
+            int Index2 = arr2.GetLength(0) - 1;
+            int i = Index1 / 2;
+            int i1 = Index1 - (Index1 / 2);
+            int sum = arr1.Take(i).Sum();
+            int sum1 = arr1.Take(i1).Sum();
+            int m = Index1 / 2;
+            int m1 = Index2 - (Index2 / 2);
+            int sum2 = arr2.Take(m).Sum();
+            int sum3 = arr2.Take(m1).Sum();
+
+            if (Index1 == Index2 || Index1 == 0 || Index2 == 0)
+            {
+                return 0;
+            }
+            if (arr1[Index1] != arr2[Index2])
+            {
+                return Index1;
+            }
+            else if (sum != sum2)
+            {
+                for(int ind=0;i< Index1 / 2;ind++)
+                {
+                    if (arr1[ind] != arr2[ind])
+                    {
+                        return ind;
+                    }
+                }
+            }
+            else if(sum1!=sum3)
+            {
+                for (int ind = i1; i < Index1 ; ind++)
+                {
+                    if (arr1[ind] != arr2[ind])
+                    {
+                        return ind;
+                    }
+                }
+            }
+            return 0;
+            
